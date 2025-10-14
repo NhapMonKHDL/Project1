@@ -89,6 +89,8 @@ def preprocess(csv_file_name, output_dir='data_bonbanh'):
         dataframe['sell_time'] = dataframe['sell_time'].apply(extract_daytime)
         # Áp dụng lấy số km đã đi
         dataframe['traveled_kilometer'] = dataframe['traveled_kilometer'].apply(parse_km)
+        # Điền vào các ô trống trong cột địa chỉ
+        dataframe.fillna({'owner_address': 'Không có'}, inplace=True)
         # print(dataframe[['name','sell_time','price','traveled_kilometer']].head(50))
 
         if os.path.exists(processed_file_path):
