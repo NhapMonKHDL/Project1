@@ -62,12 +62,12 @@ def extract_daytime(s):
 
 def parse_km(s):
     if pd.isna(s):
-        return None
+        return 0
     if not isinstance(s, str):
-        return None
+        return 0
     # Xóa mọi ký tự không phải số
     digits = re.sub(r'[^\d]', '', s)
-    return int(digits) if digits else None
+    return int(digits) if digits else 0
 
 def preprocess(csv_file_name, output_dir='data_bonbanh'):
     try:
